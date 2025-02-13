@@ -1,17 +1,17 @@
-type,section_name,name,file_name
-Physical,Fisico,Texture,def-esp-texture.qmd
-Physical,Fisico,Bulk Density,def-esp-bulk-density.qmd
-Physical,Fisico,Infiltration,def-esp-infiltration.qmd
-Physical,Fisico,Water Holding Capacity,def-esp-water-holding.qmd
-Physical,Fisico,Aggregate Stability,def-esp-agg-stability.qmd
-Biological,Biologico,Organic Matter,def-esp-organic-matter.qmd
-Biological,Biologico,Mineralizable Carbon,def-esp-min-carbon.qmd
-Biological,Biologico,Oxidizable Carbon,def-esp-ox-carbon.qmd
-Biological,Biologico,Mieralizable Nitrogen,def-esp-min-nitro.qmd
-Biological,Biologico,ACE Soil Proten,def-esp-ace-soil.qmd
-Chemical,Quimico,Plant Essential Nutrients,def-esp-plant-essentialsl.qmd
-Chemical,Quimico,Soil pH,def-esp-soil-ph.qmd
-Chemical,Quimico,Electrical Conductivity,def-esp-elec-con.qmd
-Chemical,Quimico,Cation Exchange Capacity,def-esp-cation-ex.qmd
-Chemical,Quimico,Total Nitrogen,def-esp-total-nitro.qmd
-Chemical,Quimico,Inorganic Carbon,def-esp-inorganic-carb.qmd
+﻿type,section_name,name,aliases,file_name
+Biological,Biológico,Ace Protein,"ACE Protein; ACE; Autoclaved Citrate-Extractable Protein, Soil Protein",def-esp-ace-protein.qmd
+Biological,Biológico,Mineralizable C,Mineralizable C; Mineralizable Carbon; MinC; Soil Respiration; Potentially Mineralizable Carbon; PMC; Solvita; Solvita Burst; CO2 Burst; Burst; Solvita CO2 Burst,def-esp-aggregate-stability.qmd
+Biological,Biológico,Mineralizable N,Potentially Mineralizable Nitrogen; PMN; Mineralizable Nitrogen; MN,def-esp-bulk-density.qmd
+Biological,Biológico,Permanganate Oxidizable C,Permanganate Oxidizable Carbon; POXC,def-esp-cec.qmd
+Biological,Biológico,Soil Organic Matter,Soil Organic Matter; SOM; Organic Matter; OM,def-esp-ec.qmd
+Chemical,Químico,Cation Exchange Capacity,Cation Exchange Capacity; CEC,def-esp-infiltration.qmd
+Chemical,Químico,Electrical Conductivity,Electrical Conductivity; EC,def-esp-inorganic-c.qmd
+Chemical,Químico,Inorganic C,Inorganic C; Inorganic Carbon,def-esp-min-c.qmd
+Chemical,Químico,pH,Soil pH; pH,def-esp-nutrients.qmd
+Chemical,Químico,Plant Essential Nutrients,Nitrogen; N; Nitrate-Nitrogen; Nitrate-N; NO₃-N; Ammonium-Nitrogen; Ammonium-N; NH₄-N; Phosphorous; P; Potassium; K; Calcium; Ca; Magnesium; Mg; Sulfur; S; Boron; B;  Iron; Fe; Manganese; Mn; Copper; Cu; Zinc; Zn; Sodium; Na,def-esp-ph.qmd
+Chemical,Químico,Total N,Total N; Total Nitrogen,def-esp-pmn.qmd
+Physical,Físico,Aggregate Stability,Aggregate Stability; Agg. Stability; AS; Wet Aggregate Stability; Wet Agg. Stability; WSA,def-esp-poxc.qmd
+Physical,Físico,Bulk Density,Bulk Density; BD,def-esp-som.qmd
+Physical,Físico,Infiltration,Infiltration,def-esp-texture.qmd
+Physical,Físico,Texture,Texture; Soil Texture,def-esp-total-n.qmd
+Physical,Físico,Water Holding Capacity,Water Holding Capacity; WHC,def-esp-whc.qmd

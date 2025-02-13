@@ -1,17 +1,17 @@
-type,section_name,name,file_name
-Physical,Physical,Texture,def-texture.qmd
-Physical,Physical,Bulk Density,def-bulk-density.qmd
-Physical,Physical,Infiltration,def-infiltration.qmd
-Physical,Physical,Water Holding Capacity,def-water-holding.qmd
-Physical,Physical,Aggregate Stability,def-agg-stability.qmd
-Biological,Biological,Organic Matter,def-organic-matter.qmd
-Biological,Biological,Mineralizable Carbon,def-min-carbon.qmd
-Biological,Biological,Oxidizable Carbon,def-ox-carbon.qmd
-Biological,Biological,Mieralizable Nitrogen,def-min-nitro.qmd
-Biological,Biological,ACE Soil Proten,def-ace-soil.qmd
-Chemical,Chemical,Plant Essential Nutrients,def-plant-essentialsl.qmd
-Chemical,Chemical,Soil pH,def-soil-ph.qmd
-Chemical,Chemical,Electrical Conductivity,def-elec-con.qmd
-Chemical,Chemical,Cation Exchange Capacity,def-cation-ex.qmd
-Chemical,Chemical,Total Nitrogen,def-total-nitro.qmd
-Chemical,Chemical,Inorganic Carbon,def-inorganic-carb.qmd
+﻿type,section_name,name,aliases,file_name
+Biological,Biological,Ace Protein,"ACE Protein; ACE; Autoclaved Citrate-Extractable Protein, Soil Protein",def-ace-protein.qmd
+Biological,Biological,Mineralizable C,Mineralizable C; Mineralizable Carbon; MinC; Soil Respiration; Potentially Mineralizable Carbon; PMC; Solvita; Solvita Burst; CO2 Burst; Burst; Solvita CO2 Burst,def-aggregate-stability.qmd
+Biological,Biological,Mineralizable N,Potentially Mineralizable Nitrogen; PMN; Mineralizable Nitrogen; MN,def-bulk-density.qmd
+Biological,Biological,Permanganate Oxidizable C,Permanganate Oxidizable Carbon; POXC,def-cec.qmd
+Biological,Biological,Soil Organic Matter,Soil Organic Matter; SOM; Organic Matter; OM,def-ec.qmd
+Chemical,Chemical,Cation Exchange Capacity,Cation Exchange Capacity; CEC,def-infiltration.qmd
+Chemical,Chemical,Electrical Conductivity,Electrical Conductivity; EC,def-inorganic-c.qmd
+Chemical,Chemical,Inorganic C,Inorganic C; Inorganic Carbon,def-min-c.qmd
+Chemical,Chemical,pH,Soil pH; pH,def-nutrients.qmd
+Chemical,Chemical,Plant Essential Nutrients,Nitrogen; N; Nitrate-Nitrogen; Nitrate-N; NO₃-N; Ammonium-Nitrogen; Ammonium-N; NH₄-N; Phosphorous; P; Potassium; K; Calcium; Ca; Magnesium; Mg; Sulfur; S; Boron; B;  Iron; Fe; Manganese; Mn; Copper; Cu; Zinc; Zn; Sodium; Na,def-ph.qmd
+Chemical,Chemical,Total N,Total N; Total Nitrogen,def-pmn.qmd
+Physical,Physical,Aggregate Stability,Aggregate Stability; Agg. Stability; AS; Wet Aggregate Stability; Wet Agg. Stability; WSA,def-poxc.qmd
+Physical,Physical,Bulk Density,Bulk Density; BD,def-som.qmd
+Physical,Physical,Infiltration,Infiltration,def-texture.qmd
+Physical,Physical,Texture,Texture; Soil Texture,def-total-n.qmd
+Physical,Physical,Water Holding Capacity,Water Holding Capacity; WHC,def-whc.qmd

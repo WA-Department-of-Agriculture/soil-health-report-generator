@@ -2,7 +2,8 @@ server <- function(input, output, session) {
   
   #mapping file for data dictionary input, different ones for english & spanish
   measure_mapping<-read.csv("files/measurement_dictionary.csv")
-  measure_mapping_esp<-read.csv("files/measurement_dictionary_esp.csv")
+  measure_mapping_esp<-read.csv("files/measurement_dictionary_esp.csv",
+                                encoding = "UTF-8")
   
   
   # Disable Step 4 on app load

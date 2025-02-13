@@ -1,3 +1,5 @@
+<!-- Image wrapped around text for HTML -->
+
 ::: {.content-visible when-format="html"}
 ![](https://raw.githack.com/WA-Department-of-Agriculture/soils/main/figures/compaction-spanish.png){width="3in"
 style="float:right"

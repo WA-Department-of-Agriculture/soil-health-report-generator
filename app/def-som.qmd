@@ -1,3 +1,5 @@
+<!-- Image wrapped around text for HTML -->
+
 ::: {.content-visible when-format="html"}
 ![](https://raw.githack.com/WA-Department-of-Agriculture/soils/main/figures/som.png){width="3.5in"
 style="float:right"

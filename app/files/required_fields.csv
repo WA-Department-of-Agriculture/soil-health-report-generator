@@ -3,10 +3,9 @@ year,double,FALSE,-,Data
 sample_id,-,FALSE,sample_id,Data
 farm_name,-,TRUE,-,Data
 producer_id,-,FALSE,-,Data
-field_name,char,FALSE,sample_id,Data
-field_id,-,FALSE,sample_id,Data
-county,char,FALSE,-,Data
-crop,char,TRIE,-,Data
+field_id,-,FALSE,"c(""year"", ""producer_id"")",Data
+county,char,TRUE,-,Data
+crop,char,TRUE,-,Data
 longitude,double,TRUE,-,Data
 latitude,double,TRUE,-,Data
 texture,char,FALSE,-,Data

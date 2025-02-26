@@ -1,5 +1,5 @@
-﻿type,section_name,name,aliases,file_name
-Biological,Biological,Ace Protein,"ACE Protein; ACE; Autoclaved Citrate-Extractable Protein, Soil Protein",def-ace-protein.qmd
+type,section_name,name,aliases,file_name
+Biological,Biological,ACE Protein,"ACE Protein; ACE; Autoclaved Citrate-Extractable Protein, Soil Protein",def-ace-protein.qmd
 Biological,Biological,Mineralizable C,Mineralizable C; Mineralizable Carbon; MinC; Soil Respiration; Potentially Mineralizable Carbon; PMC; Solvita; Solvita Burst; CO2 Burst; Burst; Solvita CO2 Burst,def-min-c.qmd
 Biological,Biological,Mineralizable N,Potentially Mineralizable Nitrogen; PMN; Mineralizable Nitrogen; MN,def-pmn.qmd
 Biological,Biological,Permanganate Oxidizable C,Permanganate Oxidizable Carbon; POXC,def-poxc.qmd

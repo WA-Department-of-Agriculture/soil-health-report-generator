@@ -9,6 +9,7 @@ format:
     link-external-newwindow: true
     embed-resources: true
     css: resources/styles.css
+    format-links: false
   docx: 
     toc: false
     reference-doc: resources/word-template.docx
@@ -29,6 +30,14 @@ params:
 <!-- Set styling variables -->
 
 ```{r set-fonts-colors}
+#| output: false
+
+library(gdtools)
+library(gfonts)
+
+gdtools::register_gfont("Lato")  
+gdtools::register_gfont("Poppins")  
+
 # EDIT: Replace any font names and colors to match your branding.
 header_font <- "Georgia"
 body_font <- "Arial"
@@ -253,14 +262,14 @@ indicators <- data.frame(
 
 flextable::as_grouped_data(indicators, groups = "Medir cada") |>
   flextable::as_flextable() |>
-  # soils::style_ft(
-  #   header_font = header_font,
-  #   body_font = body_font,
-  #   header_color = header_color,
-  #   header_text_color = header_text_color,
-  #   border_color = border_color
-  # ) |>
- # flextable::bg(i = ~ !is.na(`Medir cada`), bg = lighter_color) |> 
+  soils::style_ft(
+    header_font = header_font,
+    body_font = body_font,
+    header_color = header_color,
+    header_text_color = header_text_color,
+    border_color = border_color
+  ) |>
+  flextable::bg(i = ~ !is.na(`Medir cada`), bg = lighter_color) |>
   flextable::set_table_properties(layout = "autofit")
 ```
 

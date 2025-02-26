@@ -9,6 +9,7 @@ format:
     link-external-newwindow: true
     embed-resources: true
     css: resources/styles.css
+    format-links: false
   docx: 
     toc: false
     reference-doc: resources/word-template.docx
@@ -30,11 +31,13 @@ params:
 <!-- Set styling variables -->
 
 ```{r set-fonts-colors}
+#| output: false
+
 library(gdtools)
 library(gfonts)
 
-gdtools::register_gfont("Lato")  
-gdtools::register_gfont("Poppins")  
+gdtools::register_gfont("Lato")
+gdtools::register_gfont("Poppins")
 
 # EDIT: Replace any font names and colors to match your branding.
 header_font <- "Poppins"
@@ -87,19 +90,20 @@ fs::dir_create(path)
 ```
 
 ```{r read-data}
-
-
 ### SET UP MEASUREMENT DEFINITIONS
 measures <- unlist(strsplit(params$measures, ","))
-definition_file<-read.csv(params$definition_file)
-#filtered dictionary
-measure_mapping<-definition_file|>filter(file_name %in% measures)
-#unique measure types, e.g. Biological, Phyisical, Etc
-distinct_measure_types<-measure_mapping|>distinct(section_name)|>pull(section_name)
+definition_file <- read.csv(params$definition_file)
 
+# filtered dictionary
+measure_mapping <- definition_file |> filter(file_name %in% measures)
+
+# unique measure types, e.g. Biological, Phyisical, Etc
+distinct_measure_types <- measure_mapping |>
+  distinct(section_name) |>
+  pull(section_name)
 
 ### READ IN DATA FILE
-data<-readxl::read_xlsx(params$data_file, sheet = "Data")
+data <- readxl::read_xlsx(params$data_file, sheet = "Data")
 
 dictionary <- readxl::read_xlsx(params$data_file, sheet = "Data Dictionary") |>
   dplyr::mutate(
@@ -123,7 +127,7 @@ measurement_groups <- unique(dictionary$measurement_group)
 # this column range with the column indices of the soil measurements in your
 # dataset.
 
-num_cols<-ncol(data)
+num_cols <- ncol(data)
 
 # Tidy data into long format and join with data dictionary
 results_long <- data |>
@@ -133,13 +137,13 @@ results_long <- data |>
       12:num_cols,
       as.numeric
     )
-   )|> 
+  ) |>
   tidyr::pivot_longer(
     # EDIT: replace with the column range of your soil measurements
     cols = 12:num_cols,
     names_to = "measurement"
   ) |>
-   dplyr::inner_join(dictionary, by = c("measurement" = "column_name")) |>
+  dplyr::inner_join(dictionary, by = c("measurement" = "column_name")) |>
   dplyr::mutate(
     group_order = factor(
       group_order,
@@ -167,13 +171,6 @@ results_long$farm_name <- ifelse(
   is.na(results_long$farm_name),
   glue::glue("Farm {params$producer_id}"),
   results_long$farm_name
-)
-
-# If field name is blank, use field ID
-results_long$field_name <- ifelse(
-  is.na(results_long$field_name),
-  glue::glue("Field {results_long$field_id}"),
-  results_long$field_name
 )
 
 # Subset to producer samples
@@ -213,7 +210,7 @@ results_long <- results_long |>
 # Prep data for GIS table and map
 gis_df <- soils::prep_for_map(
   producer_samples,
-  label_heading = field_name,
+  label_heading = field_id,
   # If crop is empty, omit from popup
   label_body = ifelse(!is.na(crop), crop, "")
 )
@@ -248,7 +245,7 @@ producer_table <- producer_samples |>
     measurement_group,
     abbr,
     value,
-    "Field or Average" = field_name,
+    "Field or Average" = field_id,
     Texture = texture
   )
 
@@ -372,7 +369,7 @@ df_plot <- results_long |>
     # Label for tooltip
     label = dplyr::case_when(
       category == "Your fields" ~ glue::glue(
-        "{field_name}<br>{crop}<br>{value} {unit}"
+        "{field_id}<br>{crop}<br>{value} {unit}"
       ),
       category == "Same crop" ~ glue::glue(
         "{crop}<br>{value} {unit}"
@@ -596,12 +593,12 @@ health](https://www.nrcs.usda.gov/conservation-basics/natural-resource-concerns/
 for (measure_type in distinct_measure_types) {
   # Print the section header
   cat("##", measure_type, "\n\n")
-  
+
   # Get measures belonging to this type
-  measures_in_type <- measure_mapping |> 
-    filter(section_name == measure_type) |> 
+  measures_in_type <- measure_mapping |>
+    filter(section_name == measure_type) |>
     pull(file_name)
-  
+
   # Include each measure file, ensuring the correct file path
   for (measure in measures_in_type) {
     cat("{{< include quarto/measurements/", measure, " >}}\n\n", sep = "")
@@ -617,18 +614,17 @@ for (measure_type in distinct_measure_types) {
 for (measure_type in distinct_measure_types) {
   # Print the section header
   cat("##", measure_type, "\n\n")
-  
+
   # Get measures belonging to this type
-  measures_in_type <- measure_mapping |> 
-    filter(type == measure_type) |> 
+  measures_in_type <- measure_mapping |>
+    filter(type == measure_type) |>
     pull(file_name)
-  
+
   # Include each measure file
   for (measure in measures_in_type) {
     cat("{{< include quarto/measurements/", measure, " >}}\n\n", sep = "")
   }
 }
-
 ```
 :::
 
@@ -718,14 +714,14 @@ indicators <- data.frame(
 
 flextable::as_grouped_data(indicators, groups = "Measure every") |>
   flextable::as_flextable() |>
-  # soils::style_ft(
-  #   header_font = header_font,
-  #   body_font = body_font,
-  #   header_color = header_color,
-  #   header_text_color = header_text_color,
-  #   border_color = border_color
-  # ) |>
-#  flextable::bg(i = ~ !is.na(`Measure every`), bg = lighter_color) |> 
+  soils::style_ft(
+    header_font = header_font,
+    body_font = body_font,
+    header_color = header_color,
+    header_text_color = header_text_color,
+    border_color = border_color
+  ) |>
+  flextable::bg(i = ~ !is.na(`Measure every`), bg = lighter_color) |>
   flextable::set_table_properties(layout = "autofit")
 ```
 
@@ -745,8 +741,7 @@ fig-alt="Infographic titled How to Get Quality Results. Be Consistent: sample at
 gis_ft <- gis_df |>
   dplyr::select(
     `Sample ID` = sample_id,
-    `Field ID` = field_id,
-    `Field Name` = field_name,
+    Field = field_id,
     Crop = crop,
     Longitude = longitude,
     Latitude = latitude

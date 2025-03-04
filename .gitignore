@@ -57,3 +57,4 @@ rsconnect/
 
 # figure_output folder
 /app/figure-output
+/app/template_files
